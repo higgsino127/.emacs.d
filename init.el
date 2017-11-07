@@ -75,11 +75,6 @@
 (setq show-paren-style 'mixed)
 (show-paren-mode t)
 
-;; vertical border
-;; Reverse colors for the border to have nicer line  
-(set-face-background 'vertical-border (face-background 'mode-line))
-(set-display-table-slot standard-display-table 
-                        'vertical-border (make-glyph-code 8203))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -105,7 +100,8 @@
 
 
 ;; cask 
-(require 'cask "~/.cask/cask.el")
+;;(require 'cask "~/.cask/cask.el")
+(require 'cask "/usr/local/opt/cask/cask.el")
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
@@ -203,3 +199,27 @@
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(use-package yatex)
+;; yatex
+(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+(setq auto-mode-alist
+      (append '(("\\.tex$" . yatex-mode)
+        ("\\.ltx$" . yatex-mode)
+        ("\\.cls$" . yatex-mode)
+        ("\\.sty$" . yatex-mode)
+        ("\\.clo$" . yatex-mode)
+        ("\\.bbl$" . yatex-mode)) auto-mode-alist))
+(setq YaTeX-inhibit-prefix-letter t)
+(setq YaTeX-kanji-code 4)
+(setq YaTeX-latex-message-code 'utf-8)
+(setq YaTeX-use-AMS-LaTeX t)
+(setq YaTeX-dvi2-command-ext-alist
+      '(("TeXworks\\|texworks\\|texstudio\\|mupdf\\|SumatraPDF\\|Preview\\|Skim\\|TeXShop\\|evince\\|okular\\|zathura\\|qpdfview\\|Firefox\\|firefox\\|chrome\\|chromium\\|Adobe\\|Acrobat\\|AcroRd32\\|acroread\\|pdfopen\\|xdg-open\\|open\\|start" . ".pdf")))
+(add-hook 'yatex-mode-hook '(lambda () (auto-fill-mode -1))) ;; 自動で改行しない
+
+;; vertical border
+;; Reverse colors for the border to have nicer line  
+(set-face-background 'vertical-border (face-background 'mode-line))
+(set-display-table-slot standard-display-table 
+                        'vertical-border (make-glyph-code 8203))

@@ -15,3 +15,4 @@
 (depends-on "smartparens")
 (depends-on "undo-tree")
 (depends-on "use-package")
+(depends-on "yatex")
