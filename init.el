@@ -156,18 +156,7 @@
   )
 
 ;; python-mode
-(use-package python-mode
-  :ensure t
-  :config
-  (setq py-outline-minor-mode-p nil)
-  ;; (setq py-indent-no-completion-p t)
-  ;; (setq py-indent-honors-inline-comment t)
-  ;; (setq py-tab-shifts-region-p t)
-  (setq py-smart-indentation t)
-  )
-
-
-
+(require 'python)
 
 ;; pallet to combine with cask and package
 (use-package pallet)
