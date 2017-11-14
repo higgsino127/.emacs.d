@@ -11,7 +11,7 @@
 (depends-on "pallet")
 (depends-on "popwin")
 (depends-on "powerline")
-#(depends-on "python-mode")
+(depends-on "python-mode")
 (depends-on "smartparens")
 (depends-on "undo-tree")
 (depends-on "undohist")

@@ -67,6 +67,9 @@
 (setq-default truncate-lines t)
 (global-set-key (kbd "C-c l") 'toggle-truncate-lines)
 
+;; add indent when new lie
+(global-set-key (kbd "C-m") 'newline-and-indent)
+
 
 ;; disable vc mode
 (setq vc-handled-backends ())
@@ -110,9 +113,9 @@
   )
 (cask-initialize)
 ;; pallet to combine with cask and package
-;;(require 'pallet)
-;;(pallet-mode t)
-(use-package pallet)
+(require 'pallet)
+(pallet-mode t)
+;;(use-package pallet)
 (require 'package)
 (package-initialize)
 
@@ -162,10 +165,10 @@
   :config
   (global-undo-tree-mode)
   )
-;; undo hist
+;;undo hist
 (use-package  undohist
-  :config
-  (undohist-initialize))
+ :config
+ (undohist-initialize))
 
 ;; python-mode
 (require 'python)
@@ -173,9 +176,9 @@
 
 ;; powerline
 (use-package powerline
-  :config
-  (powerline-default-theme-mod) ;; in color theme masahiro
-  )
+ :config
+ (powerline-default-theme-mod) ;; in color theme masahiro
+ )
 ;; ediff
 (use-package diff-mode
   :config
@@ -205,7 +208,7 @@
 (setq YaTeX-use-AMS-LaTeX t)
 (setq YaTeX-dvi2-command-ext-alist
       '(("TeXworks\\|texworks\\|texstudio\\|mupdf\\|SumatraPDF\\|Preview\\|Skim\\|TeXShop\\|evince\\|okular\\|zathura\\|qpdfview\\|Firefox\\|firefox\\|chrome\\|chromium\\|Adobe\\|Acrobat\\|AcroRd32\\|acroread\\|pdfopen\\|xdg-open\\|open\\|start" . ".pdf")))
-(add-hook 'yatex-mode-hook '(lambda () (auto-fill-mode -1))) ;; 自動で改行しない
+(add-hook 'yatex-mode-hook '(lambda () (auto-fill-mode -1))) ;; without auto new  line
 
 ;; vertical border
 ;; Reverse colors for the border to have nicer line  
