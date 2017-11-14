@@ -38,6 +38,9 @@
 ;; set mac-keyboad's 'option' to meta-key
 (setq mac-option-modifier 'meta)
 
+;; Ignore Capital or not 
+(setq completion-ignore-case t)
+
 ;; C-h ---> back space
 (global-set-key "\C-h" 'delete-backward-char)
 
@@ -58,7 +61,6 @@
 ;; Off auto-new-line in YaTeX mode
 (add-hook ' yatex-mode-hook 
  '(lambda () (auto-fill-mode -0)))
-
 
 
 ;; truncate long lines
@@ -100,11 +102,17 @@
 
 
 ;; cask 
-;;(require 'cask "~/.cask/cask.el")
-(require 'cask "/usr/local/opt/cask/cask.el")
+(when (equal system-type 'gnu/linux) ;; for Linux(lxplus)
+  (require 'cask "~/.cask/cask.el")
+  )
+(when (equal system-type 'darwin) ;; for Mac
+  (require 'cask "/usr/local/opt/cask/cask.el")
+  )
 (cask-initialize)
-(require 'pallet)
-(pallet-mode t)
+;; pallet to combine with cask and package
+;;(require 'pallet)
+;;(pallet-mode t)
+(use-package pallet)
 (require 'package)
 (package-initialize)
 
@@ -154,22 +162,14 @@
   :config
   (global-undo-tree-mode)
   )
+;; undo hist
+(use-package  undohist
+  :config
+  (undohist-initialize))
 
 ;; python-mode
 (require 'python)
 
-;; pallet to combine with cask and package
-(use-package pallet)
-
-;; ;; I don't know but ...
-;; (use-package cl-lib
-;;   :config 
-;;   (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
-;;     "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-;;     (cl-letf (((symbol-function #'process-list) (lambda ())))
-;;       ad-do-it)
-;;     )
-;;   )
 
 ;; powerline
 (use-package powerline

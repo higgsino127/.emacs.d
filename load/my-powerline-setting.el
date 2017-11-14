@@ -34,8 +34,8 @@
                                 ;; (powerline-raw "L" mode-line 'l)
                                 ;; ;;(powerline-raw (char-to-string #xe0a1) mode-line 'r)
                                 ;; (powerline-raw "%l" mode-line 'l)
-                                ;; (powerline-raw "/"  mode-line )
-                                (powerline-raw " " mode-line)
+                                ;;(powerline-raw "/"  mode-line )
+                                (powerline-raw " "  mode-line )
                                 (powerline-raw "%p" mode-line 'r)
                                 
                                 (powerline-raw " " mode-line)
