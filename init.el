@@ -67,9 +67,6 @@
 (setq-default truncate-lines t)
 (global-set-key (kbd "C-c l") 'toggle-truncate-lines)
 
-;; add indent when new lie
-(global-set-key (kbd "C-m") 'newline-and-indent)
-
 
 ;; disable vc mode
 (setq vc-handled-backends ())

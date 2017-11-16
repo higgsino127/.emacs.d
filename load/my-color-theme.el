@@ -68,7 +68,8 @@ Green on black, includes font-lock, show-paren, and ediff."
     (ediff-even-diff-C ((t (:inherit 'ediff-even-diff-A))))
 
 
-    
+    (undo-tree-visualizer-current-face   ((t (:foreground "red") )) )
+    (undo-tree-visualizer-active-branch-face  ((t (:foreground "red") )) )
     
     (highlight ((t (:background "yellow" :foreground "red"))))
     (isearch ((t (:background "dim gray" :foreground "aquamarine"))))
