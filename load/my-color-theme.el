@@ -24,6 +24,7 @@ Green on black, includes font-lock, show-paren, and ediff."
     (blank-tab-face ((t (:background "green" :foreground "black"))))
     (bold ((t (:bold t))))
     (bold-italic ((t (:italic t :bold t))))
+
     
     (font-lock-builtin-face ((t (:italic t :bold t :foreground "LightSteelBlue"))))
     (font-lock-comment-face ((t (:italic t :foreground "LightGoldenrod4"))))
@@ -80,6 +81,11 @@ Green on black, includes font-lock, show-paren, and ediff."
     (show-paren-match-face ((t (:background "turquoise" :foreground "White"))))
     (show-paren-mismatch-face ((t (:background "purple" :foreground "white"))))
     (underline ((t (:underline t))))
+    
+    
+    ;;(vertical-border-face ((t ( :foreground "gray10" :background "LightGray" ))))
+    (vertical-border ((t ( :foreground "dim gray" :background nil ))))
+    
     )))
 
 

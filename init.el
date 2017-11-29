@@ -1,4 +1,4 @@
-
+3
 ;;; uncomment this line to disable loading of "default.el" at startup
 (setq inhibit-default-init t)
 
@@ -168,7 +168,12 @@
  (undohist-initialize))
 
 ;; python-mode
-(require 'python)
+(use-package python-mode
+  :config
+  (setq py-indent-tabs-mode t)
+  (setq py-smart-indentation t)
+  (setq py-indent-no-completion-p t)
+  )
 
 
 ;; powerline
@@ -208,7 +213,17 @@
 (add-hook 'yatex-mode-hook '(lambda () (auto-fill-mode -1))) ;; without auto new  line
 
 ;; vertical border
-;; Reverse colors for the border to have nicer line  
-(set-face-background 'vertical-border (face-background 'mode-line))
 (set-display-table-slot standard-display-table 
-                        'vertical-border (make-glyph-code 8203))
+                        'vertical-border (make-glyph-code ?│))
+
+
+;; vhdl mode
+(setq vhdl-end-comment-column 9999)
+(setq vhdl-inline-comment-column 9999)
+(setq vhdl-intelligent-tab nil)
+(setq vhdl-underscore-is-part-of-word t)
+(setq vhdl-word-completion-in-minibuffer nil)
+(setq vhdl-indent-comment-like-next-code-line nil)
+
+
+(setq indent-line-function 'indent-to-left-margin)
