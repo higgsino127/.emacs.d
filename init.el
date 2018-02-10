@@ -170,10 +170,19 @@
 ;; python-mode
 (use-package python-mode
   :config
-  (setq py-indent-tabs-mode t)
-  (setq py-smart-indentation t)
-  (setq py-indent-no-completion-p t)
+  ;; (setq py-indent-tabs-mode t)
+  ;; (setq py-smart-indentation t)
+  ;; (setq py-indent-no-completion-p t)
+  (setq indent-tabs-mode nil)
+  (setq indent-level 4)
+  (setq python-indent 4)
+  (setq tab-width 4)
   )
+(add-hook 'python-mode-hook
+	  '(lambda()
+	     (setq indent-tabs-mode nil)
+	     (setq indent-level 4)
+	     (setq python-indent 4)))
 
 
 ;; powerline
