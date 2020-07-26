@@ -7,6 +7,8 @@
 (depends-on "cc-mode")
 (depends-on "cmake-font-lock")
 (depends-on "color-theme")
+(depends-on "highlight-indent-guides")
+(depends-on "indent-guide")
 (depends-on "markdown-mode")
 (depends-on "pallet")
 (depends-on "popwin")
