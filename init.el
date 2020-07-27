@@ -27,6 +27,37 @@
 (show-paren-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; el-get 
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+
+
+(el-get-bundle "auto-complete")
+;; (el-get-bundle "bind-key")
+;; (el-get-bundle "cask")
+;; (el-get-bundle "highlight-indent-guides")
+;; (el-get-bundle "pallet")
+(el-get-bundle Lindydancer/cmake-font-lock) ;; (el-get-bundle "cmake-font-lock")
+(el-get-bundle "cc-mode")
+(el-get-bundle "color-theme")
+(el-get-bundle "indent-guide")
+(el-get-bundle "markdown-mode")
+(el-get-bundle "popwin")
+(el-get-bundle "powerline")
+(el-get-bundle "python-mode")
+(el-get-bundle "smartparens")
+(el-get-bundle "undo-tree")
+(el-get-bundle "undohist")
+(el-get-bundle "use-package")
+(el-get-bundle yatex :type hg :url "http://www.yatex.org/hgrepos/yatex" :branch "dev") ;; yatex
+(el-get-bundle Kitware/CMake) ;; cmake-mode 
+
+
 ;; add load dir
 ;;(add-to-load-path "load")
 (add-to-list 'load-path "~/.emacs/load")
@@ -36,23 +67,8 @@
 (load-file "~/.emacs.d/load/my-ediff-setting.el")
 (load-file "~/.emacs.d/load/my-python-setting.el")
 (load-file "~/.emacs.d/load/my-powerline-setting.el")
+(load-file "~/.emacs.d/el-get/CMake/Auxiliary/cmake-mode.el")
 
-
-
-;; cask 
-(when (equal system-type 'gnu/linux) ;; for Linux(lxplus)
-  (require 'cask "~/.cask/cask.el")
-  )
-(when (equal system-type 'darwin) ;; for Mac
-  (require 'cask "/usr/local/opt/cask/cask.el")
-  )
-(cask-initialize)
-;; pallet to combine with cask and package
-(require 'pallet)
-(pallet-mode t)
-(use-package pallet)
-;;(require 'package)
-(package-initialize)
 
 
 ;; ;; color-theme
@@ -66,9 +82,9 @@
   )
 
 
-;; ftk-data-mode
-(autoload 'ftk-data-mode "ftk-data-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.dat\\(\\.txt\\)?\\'" . ftk-data-mode))
+;; ;; ftk-data-mode
+;; (autoload 'ftk-data-mode "ftk-data-mode" nil t)
+;; (add-to-list 'auto-mode-alist '("\\.dat\\(\\.txt\\)?\\'" . ftk-data-mode))
 
 
 
@@ -173,16 +189,3 @@
 (setq vhdl-indent-comment-like-next-code-line nil)
 (setq indent-line-function 'indent-to-left-margin)
 
-;; ;; hightlight indent guide
-;; (use-package highlight-indent-guides)
-;; (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-;; (setq highlight-indent-guides-method 'character)
-;; (setq highlight-indent-guides-character ?\│)
-
-;; indent-guide
-;; (use-package indent-guide
-;;   :config
-;;   (indent-guide-global-mode)
-;;   (setq indent-guide-delay 0.1)
-;;   ;;(setq indent-guide-char (make-glyph-code ?│))
-;; )
